@@ -1,0 +1,5 @@
+CREATE TABLE users (user_id SERIAL PRIMARY KEY, username VARCHAR(255) NOT NULL, hash_password VARCHAR(255) NOT NULL, email VARCHAR(255) NOT NULL)
+
+CREATE TABLE album (album_id SERIAL PRIMARY KEY, image_url TEXT NOT NULL, album_name VARCHAR(255) NOT NULL, artist_name VARCHAR(255) NOT NULL, price NUMERIC NOT NULL, seller_id INTEGER REFERENCES users (user_id) NOT NULL)
+
+CREATE TABLE cart (id SERIAL PRIMARY KEY, user_id INTEGER REFERENCES users (user_id) NOT NULL, album_id INTEGER REFERENCES album (album_id) NOT NULL)
